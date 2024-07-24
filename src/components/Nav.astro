@@ -1,8 +1,9 @@
 ---
 import Icon from "./Icon.astro";
-import { Mountain, List } from "lucide-react";
+import { Mountain as IconMountain, List as IconList } from "lucide-react";
 import ThemeToggle from "./ThemeToggle.astro";
 import type { iconPaths } from "./IconPaths";
+import "@fontsource/arsenal-sc";
 
 /** Main menu items */
 const textLinks: { label: string; href: string }[] = [
@@ -34,14 +35,14 @@ const iconLinks: {
 <nav>
   <div class="menu-header">
     <a href="/" class="site-title">
-      <Mountain />
+      <IconMountain strokeWidth={3} />
       Gunung Pambudi Wibisono
     </a>
     <menu-button>
       <template>
         <button class="menu-button" aria-expanded="false">
           <span class="sr-only">Menu</span>
-          <List />
+          <IconList />
         </button>
       </template>
     </menu-button>
@@ -167,9 +168,9 @@ const iconLinks: {
   nav {
     z-index: 9999;
     position: relative;
-    font-family: var(--font-brand);
-    font-weight: 500;
-    margin-bottom: 3.5rem;
+    font-family: "Arsenal SC", sans-serif;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
   }
 
   .menu-header {

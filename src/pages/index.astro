@@ -10,11 +10,12 @@ import Grid from "../components/Grid.astro";
 import Hero from "../components/Hero.astro";
 import Pill from "../components/Pill.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
+import Image from "astro/components/Image.astro";
 
 // Page section components
 import ContactCTA from "../components/ContactCTA.astro";
 import Skills from "../components/Skills.astro";
-import { Cog, Code } from "lucide-react";
+import { Cog as IconCog, Code as IconCode } from "lucide-react";
 
 // Content Fetching: List four most recent work projects
 const projects = (await getCollection("work"))
@@ -30,17 +31,17 @@ const projects = (await getCollection("work"))
     <div class="wrapper stack gap-8 lg:gap-20">
       <header class="hero">
         <Hero
-          title="Hello, my name is Gunung Pambudi Wibisono"
+          title="Gunung Pambudi Wibisono"
           tagline="I am a Mechanical Engineer who is currently based in Bogor, Indonesia."
           align="start"
         >
           <div class="roles">
-            <Pill><Cog /> Mechanical Engineering</Pill>
-            <Pill><Code /> Software Developer</Pill>
+            <Pill><IconCog /> Mechanical Engineer</Pill>
+            <Pill><IconCode /> Software Developer</Pill>
           </div>
         </Hero>
 
-        <img
+        <Image
           alt="Gunung Pambudi Wibisono smiling in a red plaid shirt and tortoise shell glasses"
           width="480"
           height="620"
