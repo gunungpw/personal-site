@@ -38,7 +38,7 @@ export type SiteConfig = {
 };
 
 const siteConfig: SiteConfig = {
-  title: 'Personal Journal',
+  title: 'Gunung Pambudi Wibisono',
   subtitle: 'Digital Archive',
   description: 'Gunung P.W Personal Notes',
   headerNavLinks: [
@@ -89,7 +89,7 @@ const siteConfig: SiteConfig = {
   ],
   hero: {
     title: 'Hi There',
-    text: "I'm **Gunung Pambudi Wibisono**, a Mechanical Engineer and Software Developer.",
+    text: "I'm Mechanical Engineer and Software Developer.",
     // image: {
     //   src: '/hero.jpeg',
     //   alt: 'A person sitting at a desk in front of a computer'
