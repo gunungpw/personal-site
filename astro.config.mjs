@@ -5,10 +5,7 @@ import tailwind from '@astrojs/tailwind';
 // https://astro.build/config
 export default defineConfig({
     site: 'https://example.com',
-    integrations: [
-        sitemap(),
-        tailwind({
-            applyBaseStyles: false
-        })
-    ]
+    integrations: [sitemap(), tailwind({
+        applyBaseStyles: false
+    })]
 });
