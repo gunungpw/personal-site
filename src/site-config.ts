@@ -47,9 +47,13 @@ const siteConfig: SiteConfig = {
       href: '/'
     },
     // {
-    //     text: 'Projects',
-    //     href: '/projects'
+    //   text: 'Projects',
+    //   href: '/projects'
     // },
+    {
+      text: 'Resume',
+      href: '/resume'
+    },
     {
       text: 'Blog',
       href: '/blog'
@@ -89,7 +93,7 @@ const siteConfig: SiteConfig = {
   ],
   hero: {
     title: 'Hi There',
-    text: "I'm Mechanical Engineer and Software Developer.",
+    text: "I am a Mechanical Engineering graduate from Gadjah Mada University with experience and expertise in machining, jig and fixture design, measuring tools, materials engineering, robotics, and industrial equipment maintenance and inspection. Additionally, I possess competencies in desktop and web application programming, which support my ability to develop efficient and innovative technical solutions. With this background, I am ready to contribute professionally to engineering projects that require precision, creativity, and a technology-driven approach.",
     // image: {
     //   src: '/hero.jpeg',
     //   alt: 'A person sitting at a desk in front of a computer'
