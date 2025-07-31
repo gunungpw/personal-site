@@ -3,8 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout showHeader={false}>
-  <main class="prose prose-lg mx-auto dark:prose-invert">
-    <h1>SUMMARY</h1>
+  <main class="prose prose-base mx-auto dark:prose-invert">
+    <h1 class="mb-3">SUMMARY</h1>
     <p>
       I am a Mechanical Engineering graduate from Gadjah Mada University with
       experience and expertise in machining, jig and fixture design, measuring
@@ -17,11 +17,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       approach.
     </p>
 
-    <h1>WORK EXPERIENCE</h1>
-    <h2>
-      Kepala Seksi Madya Tool Making Machining, CV. Karya Hidup Sentosa (Quick
-      Tractor) <span class="font-normal">January 2025 – July 2025</span>
-    </h2>
+    <hr class="my-4 border-t border-gray-300 dark:border-gray-800" />
+
+    <h1 class="mb-3">WORK EXPERIENCE</h1>
+    <section class="mb-6 space-y-1">
+      <h2 class="mb-0 mt-0">Kepala Seksi Madya Tool Making Machining</h2>
+      <p class="font-normat italic">CV. Karya Hidup Sentosa (Quick Tractor)</p>
+      <p class="font-normal italic">January 2025 – July 2025</p>
+    </section>
     <ul>
       <li>
         Designed, reconditioned, and modified Jigs and Fixtures (Welding
@@ -38,10 +41,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </li>
     </ul>
 
-    <h2>
-      Internship Maintenance Engineer, PT. Indocement Tunggal Prakarsa Tbk.
-      <span class="font-normal">Augustus 2022 - September 2022</span>
-    </h2>
+    <section class="mb-6 space-y-1">
+      <h2 class="mb-0 mt-0">Internship Maintenance Engineer</h2>
+      <p class="font-normat italic">PT. Indocement Tunggal Prakarsa Tbk.</p>
+      <p class="font-normal italic">Augustus 2022 - September 2022</p>
+    </section>
     <ul>
       <li>
         Conducted inspections and maintenance of PPC cement production
@@ -57,10 +61,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </li>
     </ul>
 
-    <h2>
-      Teaching Assistant, Teknik Material I dan II Departemen Teknik Mesin UGM
-      <span class="font-normal">February 2018 – January 2019</span>
-    </h2>
+    <section class="mb-6 space-y-1">
+      <h2 class="mb-0 mt-0">
+        Teaching Assistant, Material Engineering I and II
+      </h2>
+      <p class="font-normat italic">Departemen Teknik Mesin UGM</p>
+      <p class="font-normal italic">February 2018 – January 2019</p>
+    </section>
+
     <ul>
       <li>
         Facilitated and supported the delivery of course content for Materials
@@ -82,11 +90,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </li>
     </ul>
 
-    <h2>
-      Mechanic, Gadjah Mada Robotic Team UGM <span class="font-normal"
-        >January 2021 - December 2022</span
-      >
-    </h2>
+    <section class="mb-6">
+      <h2 class="mb-0 mt-0">Mechanic</h2>
+      <p class="font-normat">
+        Gadjah Mada Robotic Team UGM
+        <br />January 2021 - December 2022
+      </p>
+    </section>
+
     <ul>
       <li>
         Designed, fabricated, and assembled all robotic components, ensuring
@@ -102,24 +113,28 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </li>
     </ul>
 
-    <h1>EDUCATION</h1>
+    <hr class="my-4 border-t border-gray-300 dark:border-gray-800" />
+
+    <h1 class="mb-3">EDUCATION</h1>
     <ul>
       <li>
-        <strong>Gadjah Mada University - S1 Teknik Mesin (3,58/4,00)</strong>
+        <strong>Gadjah Mada University - S1 Teknik Mesin</strong>
+        <br />
         Augustus 2017 - July 2023
       </li>
       <li>
-        <strong>SMA Negeri 3 Bogor – IPA (90,73/100,00)</strong> July 2014 - May
-        2017
+        <strong>SMA Negeri 3 Bogor – IPA</strong><br /> July 2014 - May 2017
       </li>
     </ul>
 
-    <h1>CERTIFICATES</h1>
+    <hr class="my-4 border-t border-gray-300 dark:border-gray-800" />
+
+    <h1 class="mb-3">CERTIFICATES</h1>
     <ul>
       <li>
         <strong>
           SNI ISO 9001:2015 Quality Management System Introduction and Training
-          (Badan Standardisasi Nasional 2024)
+          <br />(Badan Standardisasi Nasional 2024)
         </strong>
         <br />
         Completed training in Quality Management Systems, focusing on strategies
@@ -128,8 +143,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </li>
       <li>
         <strong>
-          SNI ISO 31000:2011 Risk Management Introduction and Training (Badan
-          Standardisasi Nasional 2024)
+          SNI ISO 31000:2011 Risk Management Introduction and Training
+          <br />(Badan Standardisasi Nasional 2024)
         </strong>
         <br />
         Trained in systematic risk identification, assessment, and management techniques
@@ -193,6 +208,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </li>
     </ul>
 
+    <hr class="my-4 border-t border-gray-300 dark:border-gray-800" />
+
     <h1>ADDITIONAL INFORMATION</h1>
     <p><strong>Languages:</strong> Indonesian (Active) and English (Active)</p>
     <p><strong>Technical Skills:</strong></p>
@@ -225,6 +242,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       Challenge AI Competition Cycle 2 National Level (Project: Senyummu. (
       <a href="https://senyummu.streamlit.app/">Senyummu</a>)).
     </p>
+
+    <hr class="my-4 border-t border-gray-300 dark:border-gray-800" />
 
     <h1>PROJECT</h1>
     <h2>Tool Room Design and Implementation (CV. Karya Hidup Sentosa)</h2>
