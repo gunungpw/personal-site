@@ -1,9 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Divider from "../components/Divider.astro";
 ---
 
 <BaseLayout showHeader={false}>
-  <main class="prose prose-base mx-auto dark:prose-invert">
+  <main class="prose !max-w-none dark:prose-invert">
     <h1 class="mb-3">SUMMARY</h1>
     <p>
       I am a Mechanical Engineering graduate from Gadjah Mada University with
@@ -16,9 +17,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       projects that require precision, creativity, and a technology-driven
       approach.
     </p>
-
-    <hr class="my-4 border-t border-gray-300 dark:border-gray-800" />
-
+    <Divider />
     <h1 class="mb-3">WORK EXPERIENCE</h1>
     <section class="mb-6 space-y-1">
       <h2 class="mb-0 mt-0">Kepala Seksi Madya Tool Making Machining</h2>
@@ -97,7 +96,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </ul>
 
     <section class="mb-6">
-      <h2 class="mb-0 mt-0">Mechanic</h2>
+      <h2 class="mb-0 mt-0">Mechanic Designer</h2>
       <p class="font-normal leading-6">
         Gadjah Mada Robotic Team UGM
         <br />January 2021 - December 2022
@@ -119,7 +118,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </li>
     </ul>
 
-    <hr class="my-4 border-t border-gray-300 dark:border-gray-800" />
+    <Divider />
 
     <h1 class="mb-3">EDUCATION</h1>
     <ul>
@@ -129,17 +128,68 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         Augustus 2017 - July 2023
       </li>
       <li>
-        <strong>SMA Negeri 3 Bogor – IPA</strong><br /> July 2014 - May 2017
+        <strong>SMA Negeri 3 Bogor - IPA</strong><br /> July 2014 - May 2017
       </li>
     </ul>
 
-    <hr class="my-4 border-t border-gray-300 dark:border-gray-800" />
+    <Divider />
+
+    <h1 class="mb-3">TECHNICAL SKILL</h1>
+    <ul>
+      <strong>Machining Process:</strong>
+      <ul>
+        <li>CNC Milling Machine</li>
+        <li>CNC Lathe Machine</li>
+        <li>External Grinding Machine</li>
+        <li>Surface Grinding Machine</li>
+        <li>Conventional Lathe Machine</li>
+        <li>Bandsaw Machine</li>
+      </ul>
+      <strong>Computer Aided Design and Manufacturing:</strong>
+      <ul>
+        <li>Autodesk Inventor</li>
+        <li>AutoCAD</li>
+        <li>MasterCAM</li>
+        <li>SolidWorks</li>
+        <li>Solid Edge</li>
+        <li>FreeCAD</li>
+      </ul>
+      <strong>Measuring Instruments:</strong>
+      <ul>
+        <li>Digital and Vernier Caliper</li>
+        <li>Height, Block, and Dial Gauge</li>
+        <li>Outside and Inside Micrometer</li>
+        <li>Rockwell Hardness Tester</li>
+      </ul>
+      <strong>Office Suite:</strong>
+      <ul>
+        <li>Microsoft Office (Word, Excel, PowerPoint)</li>
+        <li>LibreOffice (Writer, Calc, Impress)</li>
+      </ul>
+      <strong>Programming:</strong>
+      <ul>
+        <li>Python</li>
+        <li>JavaScript</li>
+        <li>Django</li>
+        <li>FastAPI</li>
+        <li>Cloud Computing</li>
+        <li>Linux</li>
+        <li>Bash</li>
+        <li>Cloudflare, AWS</li>
+        <li>Pandas</li>
+        <li>SQL</li>
+        <li>Command Line</li>
+        <li>DevOps</li>
+      </ul>
+    </ul>
+
+    <Divider />
 
     <h1 class="mb-3">CERTIFICATES</h1>
     <ul>
       <li>
         <strong>
-          SNI ISO 9001:2015 Quality Management System Introduction and Training
+          SNI ISO 9001:2015 Quality Management System Training
           <br />(Badan Standardisasi Nasional 2024)
         </strong>
         <br />
@@ -149,7 +199,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </li>
       <li>
         <strong>
-          SNI ISO 31000:2011 Risk Management Introduction and Training
+          SNI ISO 31000:2011 Risk Management Training
           <br />(Badan Standardisasi Nasional 2024)
         </strong>
         <br />
@@ -159,22 +209,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <li>
         <strong>
           SNI ISO 45001:2018 Occupational Health and Safety Management System
-          Introduction and Training (Badan Standardisasi Nasional 2024)
+          Training
+          <br />(Badan Standardisasi Nasional 2024)
         </strong>
         <br />
         Obtained certification in implementing occupational health and safety systems
         to mitigate workplace risks, prevent accidents, and ensure regulatory adherence.
       </li>
       <li>
-        <strong>Project Management (Coursera - Google x Prakerja 2024)</strong>
+        <strong
+          >Google Project Management
+          <br />(Coursera - Google x Prakerja 2024)</strong
+        >
         <br />
         Completed comprehensive training in project management, mastering initiation,
         planning, execution, and evaluation methodologies.
       </li>
       <li>
         <strong>
-          Azure AI Engineer Associate (Microsoft x Kominfo Fresh Graduate
-          Academy 2024)
+          Azure AI Engineer Associate
+          <br />(Microsoft x Kominfo Fresh Graduate Academy 2024)
         </strong>
         <br />
         Certified in leveraging Microsoft Azure AI tools to design, develop, and
@@ -182,15 +236,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </li>
       <li>
         <strong>
-          Bootcamp: Become an Elite Cloud Engineer (Elite Academy x Kominfo
-          Fresh Graduate Academy 2024)
+          Bootcamp: Become an Elite Cloud Engineer
+          <br />(Elite Academy x Kominfo Fresh Graduate Academy 2024)
         </strong>
         <br />
         Trained in cloud computing technologies, including AWS architecture, DevOps
         practices, and Site Reliability Engineering principles.
       </li>
       <li>
-        <strong>Big Data Platforms, Autumn (University of Helsinki 2024)</strong
+        <strong
+          >Big Data Platforms, Autumn
+          <br />(University of Helsinki 2024)</strong
         >
         <br />
         Gained expertise in scalable Big Data processing frameworks and platforms
@@ -198,7 +254,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </li>
       <li>
         <strong
-          >Introduction to Programming (University of Helsinki 2023)</strong
+          >Introduction to Programming
+          <br />(University of Helsinki 2023)</strong
         >
         <br />
         Acquired foundational programming skills, focusing on problem-solving and
@@ -206,7 +263,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </li>
       <li>
         <strong
-          >Advanced Course in Programming (University of Helsinki 2024)</strong
+          >Advanced Course in Programming
+          <br />(University of Helsinki 2024)</strong
         >
         <br />
         Developed proficiency in advanced programming concepts, emphasizing algorithm
@@ -214,42 +272,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </li>
     </ul>
 
-    <hr class="my-4 border-t border-gray-300 dark:border-gray-800" />
+    <Divider />
 
     <h1>ADDITIONAL INFORMATION</h1>
     <p><strong>Languages:</strong> Indonesian (Active) and English (Active)</p>
-    <p><strong>Technical Skills:</strong></p>
-    <ul>
-      <li>
-        <em>Computer Aided Design and Manufacturing:</em> Autodesk Inventor, AutoCAD,
-        MasterCAM, SolidWork, Solid Edge, FreeCAD
-      </li>
-      <li>
-        <em>Machining Process:</em> CNC Milling Machine, External Grinding Machine,
-        Surface Grinding Machine, CNC Lathe Machine, Conventional Lathe Machine,
-        Bandsaw Machine
-      </li>
-      <li>
-        <em>Measuring Instrument:</em> Caliper (Digital, Venier), Height Gauge, Block
-        Gauge, Dial Gauge, Outside Micrometer, Inside Micrometer, Height Gauge, Rockwell
-        Hardness Tester
-      </li>
-      <li>
-        <em>Office Suite:</em> Microsoft Office (Word, Excel, PowerPoint), LibreOffice
-        (Writer, Calc, Impress)
-      </li>
-      <li>
-        <em>Programming:</em> Python, JavaScript, Django, FastAPI, Cloud Computing,
-        Linux, Bash, Cloudflare, Pandas, SQL, Command Line, AWS
-      </li>
-    </ul>
+
     <p>
       <strong>Award:</strong> Team Leader for 1st Place in the Skilvul Innovation
       Challenge AI Competition Cycle 2 National Level (Project: Senyummu. (
       <a href="https://senyummu.streamlit.app/">Senyummu</a>)).
     </p>
 
-    <hr class="my-4 border-t border-gray-300 dark:border-gray-800" />
+    <Divider />
 
     <h1>PROJECT</h1>
     <h2>Tool Room Design and Implementation (CV. Karya Hidup Sentosa)</h2>
