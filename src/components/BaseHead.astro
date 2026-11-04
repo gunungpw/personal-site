@@ -7,20 +7,24 @@ import "../styles/global.css";
 export type Props = {
   title?: string;
   description?: string;
-  image?: { src: string; alt?: string };
+  image?: { src: string; alt?: string; width?: number; height?: number };
   pageType?: "website" | "article";
+  noindex?: boolean;
 };
 
 const {
-  description = "",
+  description = siteConfig.description,
   image = siteConfig.image,
   pageType = "website",
+  noindex = false,
 } = Astro.props;
 const title = [Astro.props.title, siteConfig.title].filter(Boolean).join(" | ");
 const resolvedImage = image?.src
   ? {
       src: new URL(image.src, Astro.site).toString(),
       alt: image.alt,
+      width: image.width,
+      height: image.height,
     }
   : undefined;
 const canonicalURL = new URL(Astro.request.url, Astro.site);
@@ -31,11 +35,7 @@ const canonicalURL = new URL(Astro.request.url, Astro.site);
 function formatCanonicalURL(url: string | URL) {
   const path = url.toString();
   const hasQueryParams = path.includes("?");
-  // If there are query params, make sure the URL has no trailing slash
-  if (hasQueryParams) {
-    path.replace(/\/?$/, "");
-  }
-  // otherwise, canonical URL always has a trailing slash
+  // Query-string URLs have no trailing slash, page URLs always do
   return path.replace(/\/?$/, hasQueryParams ? "" : "/");
 }
 ---
@@ -64,37 +64,54 @@ function formatCanonicalURL(url: string | URL) {
 
 <!-- Low Priority Global Metadata -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
 
 <!-- Page Metadata -->
-<link rel="canonical" href={formatCanonicalURL(canonicalURL)} />
-<meta name="description" content={description} />
+{noindex ? (
+  <meta name="robots" content="noindex" />
+) : (
+  <link rel="canonical" href={formatCanonicalURL(canonicalURL)} />
+)}
+{description && <meta name="description" content={description} />}
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={pageType} />
 <meta property="og:url" content={formatCanonicalURL(canonicalURL)} />
+<meta property="og:site_name" content={siteConfig.title} />
 <meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-{resolvedImage?.src && <meta property="og:image" content={resolvedImage.src} />}
+{description && <meta property="og:description" content={description} />}
 {
-  resolvedImage?.alt && (
-    <meta property="og:image:alt" content={resolvedImage.alt} />
+  resolvedImage && (
+    <>
+      <meta property="og:image" content={resolvedImage.src} />
+      {resolvedImage.alt && (
+        <meta property="og:image:alt" content={resolvedImage.alt} />
+      )}
+      {resolvedImage.width && (
+        <meta property="og:image:width" content={String(resolvedImage.width)} />
+      )}
+      {resolvedImage.height && (
+        <meta
+          property="og:image:height"
+          content={String(resolvedImage.height)}
+        />
+      )}
+    </>
   )
 }
 
 <!-- X/Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
+<meta
+  property="twitter:card"
+  content={resolvedImage ? "summary_large_image" : "summary"}
+/>
 <meta property="twitter:url" content={formatCanonicalURL(canonicalURL)} />
 <meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-{
-  resolvedImage?.src && (
-    <meta property="twitter:image" content={resolvedImage.src} />
-  )
-}
+{description && <meta property="twitter:description" content={description} />}
+{resolvedImage && <meta property="twitter:image" content={resolvedImage.src} />}
 {
   resolvedImage?.alt && (
-    <meta name="twitter:image:alt" content={resolvedImage?.alt} />
+    <meta name="twitter:image:alt" content={resolvedImage.alt} />
   )
 }
