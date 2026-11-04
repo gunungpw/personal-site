@@ -4,8 +4,14 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://example.com',
-    integrations: [sitemap(), tailwind({
-        applyBaseStyles: false
-    })]
+    site: 'https://gunung.my.id',
+    trailingSlash: 'always',
+    integrations: [
+        sitemap({
+            filter: (page) => !page.includes('/404')
+        }),
+        tailwind({
+            applyBaseStyles: false
+        })
+    ]
 });
