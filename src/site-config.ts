@@ -34,7 +34,8 @@ export type SiteConfig = {
 const siteConfig: SiteConfig = {
   title: 'Gunung Pambudi Wibisono',
   subtitle: 'Digital Archive',
-  description: 'Gunung P.W Personal Notes',
+  description:
+    'Mechanical engineer with experience in machining, jig and fixture design, and industrial equipment maintenance.',
   email: 'gunungpambudiw@gmail.com',
   image: {
     src: '/og.png',
@@ -59,11 +60,11 @@ const siteConfig: SiteConfig = {
   footerNavLinks: [],
   socialLinks: [
     {
-      text: 'Github',
+      text: 'GitHub',
       href: 'https://github.com/gunungpw'
     },
     {
-      text: 'Twitter',
+      text: 'X',
       href: 'https://x.com/gunungpw'
     },
     {
