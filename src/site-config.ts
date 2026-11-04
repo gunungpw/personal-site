@@ -2,6 +2,8 @@ export type Image = {
   src: string;
   alt?: string;
   caption?: string;
+  width?: number;
+  height?: number;
 };
 
 export type Link = {
@@ -34,13 +36,18 @@ export type SiteConfig = {
   hero?: Hero;
   subscribe?: Subscribe;
   postsPerPage?: number;
-  projectsPerPage?: number;
 };
 
 const siteConfig: SiteConfig = {
   title: 'Gunung Pambudi Wibisono',
   subtitle: 'Digital Archive',
   description: 'Gunung P.W Personal Notes',
+  image: {
+    src: '/og.png',
+    alt: 'Gunung Pambudi Wibisono — Mechanical Engineer',
+    width: 1200,
+    height: 630
+  },
   headerNavLinks: [
     {
       text: 'Home',
@@ -52,15 +59,15 @@ const siteConfig: SiteConfig = {
     // },
     {
       text: 'Resume',
-      href: '/resume'
+      href: '/resume/'
     },
     {
       text: 'Blog',
-      href: '/blog'
+      href: '/blog/'
     },
     {
       text: "Contact",
-      href: "/contact"
+      href: "/contact/"
     }
     // {
     //     text: 'Tags',
@@ -101,12 +108,11 @@ const siteConfig: SiteConfig = {
     actions: [
       {
         text: 'Get in Touch',
-        href: '/contact'
+        href: '/contact/'
       }
     ]
   },
-  postsPerPage: 5,
-  projectsPerPage: 5
+  postsPerPage: 5
 };
 
 export default siteConfig;

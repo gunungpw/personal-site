@@ -1,6 +1,6 @@
 ---
 title: 'Cara Membuat Bash Alias'
-description: Step by Step guide cara membuat bash alias
+excerpt: Panduan langkah demi langkah membuat alias pada Bash, dari alias sementara di sesi terminal hingga alias permanen di ~/.bashrc.
 publishDate: 'Aug 19 2025'
 ---
 
