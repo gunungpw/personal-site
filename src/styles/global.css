@@ -20,6 +20,17 @@
         --color-border-main: 242 241 236; /* #F2F1EC */
     }
 
+    /* Keyboard focus must stay visible on every interactive element */
+    :focus-visible {
+        outline: 2px solid rgb(var(--color-text-main));
+        outline-offset: 2px;
+    }
+
+    /* Keep anchored headings clear of the top edge */
+    :where([id]) {
+        scroll-margin-top: 2rem;
+    }
+
     /* Cyan */
     /*
     :root {

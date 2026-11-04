@@ -19,10 +19,16 @@ const { showHeader = true, ...head } = Astro.props;
     <ClientRouter />
   </head>
   <body class="bg-main text-main">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:border focus:border-main focus:bg-main focus:text-main"
+    >
+      Skip to content
+    </a>
     <div class="flex flex-col min-h-screen px-4 md:px-8">
       <Nav />
       {showHeader && <Header />}
-      <main class="grow w-full max-w-3xl mx-auto">
+      <main id="main" tabindex="-1" class="grow w-full max-w-3xl mx-auto">
         <slot />
       </main>
       <Footer />

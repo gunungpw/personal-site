@@ -2,8 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import GitHub from "../icons/GitHub.astro";
 import X from "../icons/X.astro";
-import Linkedln from "../icons/Linkedln.astro";
+import LinkedIn from "../icons/LinkedIn.astro";
 import Email from "../icons/Email.astro";
+import siteConfig from "../site-config";
 ---
 
 <BaseLayout
@@ -23,31 +24,31 @@ import Email from "../icons/Email.astro";
   </p>
   <div class="flex flex-col my-3">
     <div class="text-xl font-serif inline-flex gap-2 my-3">
-      <GitHub class="w-6 h-6 fill-current" />
+      <GitHub class="w-6 h-6 fill-current" aria-hidden="true" />
       <a
         class="hover:underline underline-offset-2"
-        href="https://github.com/gunungpw">Github</a
+        href="https://github.com/gunungpw">GitHub</a
       >
     </div>
     <div class="text-xl font-serif inline-flex gap-2 my-3">
-      <X class="w-6 h-6 fill-current" />
+      <X class="w-6 h-6 fill-current" aria-hidden="true" />
       <a
         class="hover:underline underline-offset-2"
-        href="https://x.com/gunungpw">Twitter</a
+        href="https://x.com/gunungpw">X</a
       >
     </div>
     <div class="text-xl font-serif inline-flex gap-2 my-3">
-      <Email class="w-6 h-6 fill-current" />
+      <Email class="w-6 h-6 fill-current" aria-hidden="true" />
       <a
         class="hover:underline underline-offset-2"
-        href="mailto:gunungpambudiw@gmail.com">Email</a
+        href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a
       >
     </div>
     <div class="text-xl font-serif inline-flex gap-2 my-3">
-      <Linkedln class="w-6 h-6 fill-current" />
+      <LinkedIn class="w-6 h-6 fill-current" aria-hidden="true" />
       <a
         class="hover:underline underline-offset-2"
-        href="https://www.linkedin.com/in/gunungpw/">Linkedln</a
+        href="https://www.linkedin.com/in/gunungpw/">LinkedIn</a
       >
     </div>
   </div>
