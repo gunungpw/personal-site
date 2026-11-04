@@ -1,6 +1,5 @@
 ---
-import interWoff2 from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
-import newsreaderWoff2 from "@fontsource-variable/newsreader/files/newsreader-latin-wght-normal.woff2?url";
+import spaceGroteskWoff2 from "@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url";
 import siteConfig from "../site-config";
 import "../styles/global.css";
 
@@ -43,8 +42,10 @@ function formatCanonicalURL(url: string | URL) {
 <!-- High Priority Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta id="theme-color" name="theme-color" content="#F2F1EC" />
 <title>{title}</title>
 <meta name="generator" content={Astro.generator} />
+<meta name="author" content={siteConfig.title} />
 
 <!-- Theme is applied before first paint to avoid a flash of the wrong scheme -->
 <script is:inline>
@@ -59,6 +60,10 @@ function formatCanonicalURL(url: string | URL) {
         window.matchMedia("(prefers-color-scheme: dark)").matches);
     document.documentElement.classList.toggle("dark", dark);
     document.documentElement.style.colorScheme = dark ? "dark" : "light";
+    var themeColor = document.getElementById("theme-color");
+    if (themeColor) {
+      themeColor.setAttribute("content", dark ? "#171717" : "#F2F1EC");
+    }
   })();
 </script>
 
@@ -67,14 +72,7 @@ function formatCanonicalURL(url: string | URL) {
   rel="preload"
   as="font"
   type="font/woff2"
-  href={interWoff2}
-  crossorigin="anonymous"
-/>
-<link
-  rel="preload"
-  as="font"
-  type="font/woff2"
-  href={newsreaderWoff2}
+  href={spaceGroteskWoff2}
   crossorigin="anonymous"
 />
 
@@ -118,13 +116,13 @@ function formatCanonicalURL(url: string | URL) {
 
 <!-- X/Twitter -->
 <meta
-  property="twitter:card"
+  name="twitter:card"
   content={resolvedImage ? "summary_large_image" : "summary"}
 />
-<meta property="twitter:url" content={formatCanonicalURL(canonicalURL)} />
-<meta property="twitter:title" content={title} />
-{description && <meta property="twitter:description" content={description} />}
-{resolvedImage && <meta property="twitter:image" content={resolvedImage.src} />}
+<meta name="twitter:url" content={formatCanonicalURL(canonicalURL)} />
+<meta name="twitter:title" content={title} />
+{description && <meta name="twitter:description" content={description} />}
+{resolvedImage && <meta name="twitter:image" content={resolvedImage.src} />}
 {
   resolvedImage?.alt && (
     <meta name="twitter:image:alt" content={resolvedImage.alt} />

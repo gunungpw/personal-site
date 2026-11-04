@@ -32,9 +32,12 @@
     }
 
     function syncButton() {
+        const isDark = root.classList.contains("dark");
+        const meta = document.getElementById("theme-color");
+        if (meta) meta.setAttribute("content", isDark ? "#171717" : "#F2F1EC");
+
         const button = document.getElementById("theme-toggle");
         if (!button) return;
-        const isDark = root.classList.contains("dark");
         button.setAttribute("aria-pressed", String(isDark));
         button.setAttribute(
             "aria-label",

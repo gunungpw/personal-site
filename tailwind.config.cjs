@@ -5,8 +5,11 @@ module.exports = {
     darkMode: 'class',
     theme: {
         fontFamily: {
-            sans: ['Inter Variable', ...defaultTheme.fontFamily.sans],
-            serif: ['Newsreader Variable', ...defaultTheme.fontFamily.serif]
+            // Space Grotesk is the site's only typeface. `serif` and `grotesk`
+            // are kept as aliases so the existing markup keeps working.
+            sans: ['Space Grotesk Variable', ...defaultTheme.fontFamily.sans],
+            serif: ['Space Grotesk Variable', ...defaultTheme.fontFamily.sans],
+            grotesk: ['Space Grotesk Variable', ...defaultTheme.fontFamily.sans]
         },
         extend: {
             textColor: {

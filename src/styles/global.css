@@ -1,6 +1,4 @@
-@import '@fontsource-variable/inter';
-@import '@fontsource-variable/newsreader';
-@import '@fontsource-variable/newsreader/wght-italic.css';
+@import '@fontsource-variable/space-grotesk';
 
 @tailwind base;
 @tailwind components;
@@ -18,6 +16,12 @@
         --color-bg-main: 23 23 23; /* #171717 */
         --color-bg-muted: 36 36 36; /* #242424 */
         --color-border-main: 242 241 236; /* #F2F1EC */
+    }
+
+    /* Reserve the scrollbar gutter on both edges so centered content keeps the
+       same position whether or not the current page scrolls. */
+    html {
+        scrollbar-gutter: stable both-edges;
     }
 
     /* Keyboard focus must stay visible on every interactive element */

@@ -1,353 +1,497 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Divider from "../components/Divider.astro";
+import siteConfig from "../site-config";
+
+type Job = {
+  title: string;
+  company: string;
+  location: string;
+  dates: string;
+  bullets: string[];
+};
+
+type School = {
+  institution: string;
+  location: string;
+  dates: string;
+  degree: string;
+  bullets: string[];
+};
+
+type SkillGroup = {
+  label: string;
+  items: string;
+};
+
+type Project = {
+  title: string;
+  context: string;
+  href?: string;
+  description: string;
+};
+
+type Certification = {
+  name: string;
+  issuer: string;
+  date: string;
+  description: string;
+};
+
+const summary =
+  "Mechanical Engineering graduate of Gadjah Mada University (GPA 3.58/4.00) with hands-on experience across manufacturing and tooling environments: production engineering in a wood-products plant, tool making and machining section leadership in agricultural machinery, and maintenance and inspection in cement manufacturing. Skilled in machining processes, jig and fixture design, measuring instruments, materials engineering, robotics, and industrial equipment maintenance and inspection. Also competent in desktop and web application programming, which supports the development of efficient and innovative technical solutions, including shop-floor tools for CNC program generation, tool-room control, and daily work planning. Final-year thesis on punch speed and compressor pressure effects on sheared-edge quality in aluminium alloy 1100.";
+
+const experience: Job[] = [
+  {
+    title: "Production Engineer",
+    company: "PT. Yeh Brother Wood Works Indonesia",
+    location: "Indonesia",
+    dates: "November 2025 – Present",
+    bullets: [
+      "Optimized production workflows by identifying and eliminating process bottlenecks to improve manufacturing efficiency and throughput.",
+      "Led quality improvement initiatives to reduce product rejection rates through root cause analysis and implementation of corrective action plans.",
+      "Designed and developed flow processes and manufacturing protocols for new product introductions, ensuring seamless integration from prototyping to mass production.",
+      "Acted as primary troubleshooter for production issues, resolving technical challenges to minimize downtime.",
+      "Collaborated with production, quality control/assurance, and design teams to align manufacturing standards and product specifications.",
+    ],
+  },
+  {
+    title: "Section Head, Tool Making Machining (Kepala Seksi Madya)",
+    company: "CV. Karya Hidup Sentosa (Quick Tractor)",
+    location: "Indonesia",
+    dates: "January 2025 – July 2025",
+    bullets: [
+      "Designed, reconditioned, and modified jigs and fixtures (welding fixtures, milling fixtures, inspection jigs) for mass production of Quick brand products: tractors, harvesters, and trucks.",
+      "Coordinated machining, assembly, and trial processes to ensure product quality and compliance with established standards.",
+      "Implemented continuous improvement initiatives to enhance the effectiveness and efficiency of jigs and fixtures.",
+    ],
+  },
+  {
+    title: "Team Lead, Team Senyummu",
+    company: "Skilvul Innovation Challenge",
+    location: "Indonesia",
+    dates: "May 2024 – July 2024",
+    bullets: [
+      "Led a cross-functional team to 1st place, driving collaboration through strategic brainstorming and precise project timelines for seamless deliverable execution.",
+      "Developed an advanced web application with AI integration using modern frameworks, ensuring robust functionality and intuitive UI/UX for optimal user engagement.",
+      "Managed QA testing with manual and automated methods to meet high-quality standards and deliver a polished product.",
+      "Communicated with stakeholders, delivering progress updates and technical demos to align with competition goals, earning unanimous judge approval.",
+    ],
+  },
+  {
+    title: "Mechanic",
+    company: "Gadjah Mada Robotic Team, UGM",
+    location: "Yogyakarta, Indonesia",
+    dates: "January 2021 – December 2022",
+    bullets: [
+      "Designed, fabricated, and assembled all robotic components, ensuring precision and functionality for competitive requirements.",
+      "Collaborated with the team to successfully deliver projects on time, meeting competition standards.",
+      "Implemented centralized storage and version control for 3D models and documentation, enhancing design efficiency and team coordination.",
+    ],
+  },
+  {
+    title: "Internship Maintenance Engineer",
+    company: "PT. Indocement Tunggal Prakarsa Tbk.",
+    location: "Indonesia",
+    dates: "August 2022 – September 2022",
+    bullets: [
+      "Conducted inspections and maintenance of PPC cement production facilities, covering storage units through to packaging lines.",
+      "Implemented efficient operational maintenance programs to optimize equipment longevity and performance.",
+      "Prepared reports and provided solutions for issues related to manufacturing processes within the production line.",
+    ],
+  },
+  {
+    title: "Team Leader, Community Service Program (KKN)",
+    company: "Universitas Gadjah Mada",
+    location: "Indonesia",
+    dates: "March 2022 – May 2022",
+    bullets: [
+      "Acted as liaison between the team and local government officials, coordinating activities for effective communication and timely project execution.",
+      "Developed a local map and agricultural handbook for farmers and local authorities.",
+      "Designed and implemented the official village website to support digital accessibility and public information services.",
+    ],
+  },
+  {
+    title: "Teaching Assistant, Materials Engineering I and II",
+    company: "Department of Mechanical Engineering, UGM",
+    location: "Yogyakarta, Indonesia",
+    dates: "February 2018 – January 2019",
+    bullets: [
+      "Facilitated and supported the delivery of course content for Materials Engineering I and II, assisting faculty in teaching and mentoring undergraduate students over two semesters.",
+      "Conducted comprehensive review sessions for course material, providing targeted guidance to students in preparation for examinations.",
+      "Evaluated and graded student assignments and projects, ensuring fair and consistent assessment aligned with academic standards.",
+      "Provided constructive feedback to students, fostering academic growth and encouraging critical thinking in the application of materials engineering principles.",
+    ],
+  },
+];
+
+const education: School[] = [
+  {
+    institution: "Gadjah Mada University",
+    location: "Yogyakarta, Indonesia",
+    dates: "August 2017 – July 2023",
+    degree:
+      "Bachelor of Mechanical Engineering (S1 Teknik Mesin), GPA 3.58/4.00",
+    bullets: [
+      'Final project: "Study of the Effect of Punch Speed and Compressor Pressure on Sheared Edge with Flat Tool Geometry on Aluminum Alloy 1100 Material in Punching Process."',
+    ],
+  },
+  {
+    institution: "SMA Negeri 3 Bogor",
+    location: "Bogor, Indonesia",
+    dates: "July 2014 – May 2017",
+    degree: "Natural Sciences (IPA), Grade 90.73/100.00",
+    bullets: [],
+  },
+];
+
+const skills: SkillGroup[] = [
+  {
+    label: "CAD/CAM",
+    items:
+      "Autodesk Inventor, AutoCAD, MasterCAM, SolidWorks, Solid Edge, FreeCAD",
+  },
+  {
+    label: "Machining",
+    items:
+      "CNC milling machine, CNC lathe machine, conventional lathe machine, surface grinding machine, external grinding machine, bandsaw machine",
+  },
+  {
+    label: "Inspection",
+    items:
+      "caliper (digital, vernier), outside micrometer, inside micrometer, height gauge, block gauge, dial gauge, Rockwell hardness tester",
+  },
+  {
+    label: "Quality Systems",
+    items:
+      "jig and fixture design, tool and die making, root cause analysis, Kaizen / continuous improvement, SOP and work-instruction development, ISO 9001:2015, ISO 45001:2018, ISO 31000:2011, project management",
+  },
+  {
+    label: "Programming and Data",
+    items:
+      "Python, Pandas, SQL, JavaScript, Django, FastAPI, C, C++, Go, Bash, Linux, AWS, Cloudflare, command line",
+  },
+  {
+    label: "Office Suite",
+    items:
+      "Microsoft Office (Word, Excel, PowerPoint), LibreOffice (Writer, Calc, Impress)",
+  },
+];
+
+const projects: Project[] = [
+  {
+    title: "Tool Room Design and Implementation",
+    context: "CV. Karya Hidup Sentosa",
+    description:
+      "Designed and implemented a centralized Tool Room to streamline the inventory management of cutting tools, tool holders, work equipment, and supporting devices, enhancing asset tracking and accelerating production processes in the Tool Making B Section.",
+  },
+  {
+    title: "Daily Work Plan System (RKH)",
+    context: "CV. Karya Hidup Sentosa",
+    description:
+      "Developed a structured Daily Work Plan (RKH / Rencana Kerja Harian) system to manage operator activities, incorporating task listing, operational time tracking, and weekly data reporting to improve efficiency, accountability, and performance monitoring.",
+  },
+  {
+    title: "Scrap and Repair Rate Reduction Initiative",
+    context: "CV. Karya Hidup Sentosa",
+    description:
+      "Led a project to reduce scrap and repair rates in the Tool Making B Section by developing standardized forms, SOPs for reporting, and root cause analysis protocols, achieving documented targets, minimizing defects, and reducing material, cutting tool, and energy costs.",
+  },
+  {
+    title: "Cutting Tools and Sharpening Section",
+    context: "PT. Yeh Brother Wood Works Indonesia",
+    description:
+      "Responsible for the cutting tools and sharpening section, covering cutting tool inventory, tool holders, and supporting equipment so that tooling is controlled and available for production.",
+  },
+  {
+    title: "Kaizen CNC Blanking Material Desktop Application",
+    context: "GitHub: CNC Blanking",
+    href: "https://github.com/gunungpw/cnc-blanking",
+    description:
+      "Engineered a Python and Tkinter-based desktop application to automate CNC program generation (tool path) for CNC milling, enabling precise blanking of raw materials to meet technical drawing specifications and production requirements.",
+  },
+  {
+    title: "Senyummu Web Application",
+    context: "GitHub: Senyummu",
+    href: "https://github.com/gunungpw/oral-diseases",
+    description:
+      "Created a web application utilizing image recognition to analyze dental photographs for the detection of dental diseases and damage, enhancing diagnostic accuracy and accessibility.",
+  },
+  {
+    title: "G-App Desktop Application Suite",
+    context: "GitHub",
+    href: "https://github.com/gunungpw",
+    description:
+      "A collection of lightweight, cross-platform desktop applications built for productivity and utility (Text Editor, Timer, Password Generator, Image Viewer, Calculator), written in Python with uv for dependency management and the Qt toolkit for the GUI.",
+  },
+  {
+    title: "Personal Site",
+    context: "gunung.my.id",
+    href: "/",
+    description:
+      "A personal portfolio website showcasing expertise in mechanical engineering and software development, with a resume, selected projects, and contact details.",
+  },
+  {
+    title: "CLI App Bina: Binary Manager",
+    context: "GitHub: Bina",
+    href: "https://github.com/gunungpw/bina",
+    description:
+      "A Rust-based command-line tool for managing binary installations in the XDG_BIN_HOME directory, using the ubi crate to download binaries from GitHub repositories and reporting installed versions against the latest releases.",
+  },
+];
+
+const certifications: Certification[] = [
+  {
+    name: "SNI ISO 9001:2015 Quality Management System",
+    issuer: "Badan Standardisasi Nasional",
+    date: "2024",
+    description:
+      "Establishes the requirements for a quality management system that organizations use to improve the consistency of product and service quality, meet customer needs and ensure compliance with applicable regulations.",
+  },
+  {
+    name: "SNI ISO 31000:2011 Risk Management",
+    issuer: "Badan Standardisasi Nasional",
+    date: "2024",
+    description:
+      "Introduction to an organization's risk management system: systematically identifying, assessing and managing risks to support better decision-making and organizational resilience.",
+  },
+  {
+    name: "SNI ISO 45001:2018 Occupational Health and Safety Management System",
+    issuer: "Badan Standardisasi Nasional",
+    date: "2024",
+    description:
+      "Occupational safety and health management systems used to prevent work accidents, reduce OHS risks and ensure compliance with relevant regulations.",
+  },
+  {
+    name: "Project Management",
+    issuer: "Coursera (Google x Prakerja)",
+    date: "2024",
+    description:
+      "A comprehensive course in managing projects, covering initiation, planning, execution and evaluation.",
+  },
+  {
+    name: "Azure AI Engineer Associate",
+    issuer: "Microsoft x Kominfo Fresh Graduate Academy",
+    date: "2024",
+    description:
+      "Expertise in using Microsoft Azure AI tools to build, develop and deploy AI solutions.",
+  },
+  {
+    name: "Bootcamp: Become an Elite Cloud Engineer",
+    issuer: "Elite Academy x Kominfo Fresh Graduate Academy",
+    date: "2024",
+    description:
+      "Intensive training on cloud architecture, DevOps practices and site reliability engineering.",
+  },
+  {
+    name: "Big Data Platforms, Autumn",
+    issuer: "University of Helsinki",
+    date: "2024",
+    description:
+      "Knowledge of big data processing frameworks and platforms for scalable data solutions and analytics.",
+  },
+  {
+    name: "Introduction to Programming",
+    issuer: "University of Helsinki",
+    date: "2023",
+    description:
+      "Basic programming skills focusing on problem solving and core coding techniques.",
+  },
+  {
+    name: "Advanced Course in Programming",
+    issuer: "University of Helsinki",
+    date: "2024",
+    description:
+      "Advanced programming concepts with emphasis on algorithm design and application development.",
+  },
+];
+
+const sectionTitleClass =
+  "mb-4 border-b border-main pb-1.5 font-serif text-sm font-medium uppercase tracking-[0.14em]";
+const rowClass =
+  "flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5";
+const certRowClass =
+  "grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-4";
+const dateClass = "shrink-0 text-sm text-main/70";
+const bulletListClass = "mt-1.5 list-disc space-y-1 pl-5 leading-7";
 ---
 
 <BaseLayout
   title="Resume"
-  description="Resume of Gunung Pambudi Wibisono — mechanical engineer with experience in tool making, jig and fixture design, machining, and industrial equipment maintenance."
+  description="Resume of Gunung Pambudi Wibisono — mechanical engineer with experience in production engineering, tool making, machining, and industrial equipment maintenance."
   showHeader={false}
 >
-  <div class="prose text-justify !max-w-none dark:prose-invert">
-    <h1 id="summary" class="mb-3">SUMMARY</h1>
-    <p>
-      I am a Mechanical Engineering graduate from Gadjah Mada University with
-      experience and expertise in machining, jig and fixture design, measuring
-      tools, materials engineering, robotics, and industrial equipment
-      maintenance and inspection. Additionally, I possess competencies in
-      desktop and web application programming, which support my ability to
-      develop efficient and innovative technical solutions. With this
-      background, I am ready to contribute professionally to engineering
-      projects that require precision, creativity, and a technology-driven
-      approach.
-    </p>
-
-    <Divider />
-
-    <h1 id="work-experience" class="mb-3">WORK EXPERIENCE</h1>
-    <section class="mb-6 space-y-1">
-      <h2 class="my-0">Kepala Seksi Madya Tool Making Machining</h2>
-      <p class="font-normal leading-6">
-        CV. Karya Hidup Sentosa (Quick Tractor)
-        <br />January 2025 - July 2025
-      </p>
-    </section>
-    <ul class="text-base/6">
-      <li>
-        Designed, reconditioned, and modified Jigs and Fixtures (Welding
-        Fixtures, Milling Fixtures, Inspection Jigs) for mass production of
-        Quick brand products (Tractors, Harvesters, Trucks).
-      </li>
-      <li>
-        Coordinated machining, assembly, and trial processes to ensure product
-        quality and compliance with established standards.
-      </li>
-      <li>
-        Implemented continuous improvement initiatives to enhance the
-        effectiveness and efficiency of jigs and fixtures.
-      </li>
-    </ul>
-
-    <section class="mb-6 space-y-1">
-      <h2 class="my-0">Internship Maintenance Engineer</h2>
-      <p class="font-normal leading-6">
-        PT. Indocement Tunggal Prakarsa Tbk.
-        <br />Augustus 2022 - September 2022
-      </p>
-    </section>
-
-    <ul class="text-base/6">
-      <li>
-        Conducted inspections and maintenance of PPC cement production
-        facilities, covering storage units to packaging lines.
-      </li>
-      <li>
-        Implemented efficient operational maintenance programs to optimize
-        equipment longevity and performance.
-      </li>
-      <li>
-        Prepared reports and provided solutions for issues related to
-        manufacturing processes within the production line.
-      </li>
-    </ul>
-
-    <section class="mb-6 leading-6">
-      <h2 class="my-0">Teaching Assistant, Material Engineering I and II</h2>
-      <p class="font-normal leading-6">
-        Departemen Teknik Mesin UGM
-        <br />February 2018 - January 2019
-      </p>
-    </section>
-
-    <ul class="text-base/6">
-      <li>
-        Facilitated and supported the delivery of course content for Materials
-        Engineering I and II, assisting faculty in teaching and mentoring
-        undergraduate students over two semesters.
-      </li>
-      <li>
-        Conducted comprehensive review sessions for course material, providing
-        targeted guidance to students in preparation for examinations.
-      </li>
-      <li>
-        Evaluated and graded student assignments, and projects, ensuring fair
-        and consistent assessment aligned with academic standards.
-      </li>
-      <li>
-        Provided constructive feedback to students, fostering academic growth
-        and encouraging critical thinking in the application of materials
-        engineering principles.
-      </li>
-    </ul>
-
-    <section class="mb-6">
-      <h2 class="my-0">Mechanic Designer</h2>
-      <p class="font-normal leading-6">
-        Gadjah Mada Robotic Team UGM
-        <br />January 2021 - December 2022
-      </p>
-    </section>
-
-    <ul class="text-base/6">
-      <li>
-        Designed, fabricated, and assembled all robotic components, ensuring
-        precision and functionality for competitive requirements.
-      </li>
-      <li>
-        Collaborated with team to successfully deliver projects on time, meeting
-        competition standards.
-      </li>
-      <li>
-        Implemented centralized storage and version control for 3D models and
-        documentation, enhancing design efficiency and team coordination.
-      </li>
-    </ul>
-
-    <Divider />
-
-    <h1 id="education" class="mb-3">EDUCATION</h1>
-    <ul>
-      <li>
-        <strong>Gadjah Mada University - S1 Teknik Mesin</strong>
-        <br />
-        Augustus 2017 - July 2023
-      </li>
-      <li>
-        <strong>SMA Negeri 3 Bogor - IPA</strong><br /> July 2014 - May 2017
-      </li>
-    </ul>
-
-    <Divider />
-
-    <h1 id="technical-skill" class="mb-3">TECHNICAL SKILL</h1>
-    <ul>
-      <strong>Machining Process:</strong>
-      <ul>
-        <li>CNC Milling Machine</li>
-        <li>CNC Lathe Machine</li>
-        <li>External Grinding Machine</li>
-        <li>Surface Grinding Machine</li>
-        <li>Conventional Lathe Machine</li>
-        <li>Bandsaw Machine</li>
-      </ul>
-      <strong>Computer Aided Design and Manufacturing:</strong>
-      <ul>
-        <li>Autodesk Inventor</li>
-        <li>AutoCAD</li>
-        <li>MasterCAM</li>
-        <li>SolidWorks</li>
-        <li>Solid Edge</li>
-        <li>FreeCAD</li>
-      </ul>
-      <strong>Measuring Instruments:</strong>
-      <ul>
-        <li>Digital and Vernier Caliper</li>
-        <li>Height, Block, and Dial Gauge</li>
-        <li>Outside and Inside Micrometer</li>
-        <li>Rockwell Hardness Tester</li>
-      </ul>
-      <strong>Office Suite:</strong>
-      <ul>
-        <li>Microsoft Office (Word, Excel, PowerPoint)</li>
-        <li>LibreOffice (Writer, Calc, Impress)</li>
-      </ul>
-      <strong>Programming:</strong>
-      <ul>
-        <li>Python</li>
-        <li>JavaScript</li>
-        <li>Django</li>
-        <li>FastAPI</li>
-        <li>Cloud Computing</li>
-        <li>Linux</li>
-        <li>Bash</li>
-        <li>Cloudflare, AWS</li>
-        <li>Pandas</li>
-        <li>SQL</li>
-        <li>Command Line</li>
-        <li>DevOps</li>
-      </ul>
-    </ul>
-
-    <Divider />
-
-    <h1 id="certificates" class="mb-3">CERTIFICATES</h1>
-    <ul>
-      <li>
-        <strong>
-          SNI ISO 9001:2015 Quality Management System Training
-          <br />(Badan Standardisasi Nasional 2024)
-        </strong>
-        <br />
-        Completed training in Quality Management Systems, focusing on strategies
-        to enhance product/service quality, ensure customer satisfaction, and maintain
-        regulatory compliance.
-      </li>
-      <li>
-        <strong>
-          SNI ISO 31000:2011 Risk Management Training
-          <br />(Badan Standardisasi Nasional 2024)
-        </strong>
-        <br />
-        Trained in systematic risk identification, assessment, and management techniques
-        to support informed decision-making and organizational resilience.
-      </li>
-      <li>
-        <strong>
-          SNI ISO 45001:2018 Occupational Health and Safety Management System
-          Training
-          <br />(Badan Standardisasi Nasional 2024)
-        </strong>
-        <br />
-        Obtained certification in implementing occupational health and safety systems
-        to mitigate workplace risks, prevent accidents, and ensure regulatory adherence.
-      </li>
-      <li>
-        <strong
-          >Google Project Management
-          <br />(Coursera - Google x Prakerja 2024)</strong
-        >
-        <br />
-        Completed comprehensive training in project management, mastering initiation,
-        planning, execution, and evaluation methodologies.
-      </li>
-      <li>
-        <strong>
-          Azure AI Engineer Associate
-          <br />(Microsoft x Kominfo Fresh Graduate Academy 2024)
-        </strong>
-        <br />
-        Certified in leveraging Microsoft Azure AI tools to design, develop, and
-        deploy advanced AI solutions.
-      </li>
-      <li>
-        <strong>
-          Bootcamp: Become an Elite Cloud Engineer
-          <br />(Elite Academy x Kominfo Fresh Graduate Academy 2024)
-        </strong>
-        <br />
-        Trained in cloud computing technologies, including AWS architecture, DevOps
-        practices, and Site Reliability Engineering principles.
-      </li>
-      <li>
-        <strong
-          >Big Data Platforms, Autumn
-          <br />(University of Helsinki 2024)</strong
-        >
-        <br />
-        Gained expertise in scalable Big Data processing frameworks and platforms
-        for efficient data management and analytics.
-      </li>
-      <li>
-        <strong
-          >Introduction to Programming
-          <br />(University of Helsinki 2023)</strong
-        >
-        <br />
-        Acquired foundational programming skills, focusing on problem-solving and
-        core programming techniques.
-      </li>
-      <li>
-        <strong
-          >Advanced Course in Programming
-          <br />(University of Helsinki 2024)</strong
-        >
-        <br />
-        Developed proficiency in advanced programming concepts, emphasizing algorithm
-        design and application development.
-      </li>
-    </ul>
-
-    <Divider />
-
-    <h1 id="additional-information">ADDITIONAL INFORMATION</h1>
-    <p><strong>Languages:</strong> Indonesian (Active) and English (Active)</p>
-
-    <p>
-      <strong>Award:</strong> Team Leader for 1st Place in the Skilvul Innovation
-      Challenge AI Competition Cycle 2 National Level (Project: Senyummu. (
-      <a href="https://senyummu.streamlit.app/">Senyummu</a>)).
-    </p>
-
-    <Divider />
-
-    <h1 id="project">PROJECT</h1>
-    <h2 class="my-0">Tool Room Design and Implementation</h2>
-    <p>
-      <i>CV. Karya Hidup Sentosa</i>
-      <br />
-      Designed and implemented a centralized Tool Room to streamline the inventory
-      management of cutting tools, tool holders, work equipment, and supporting devices,
-      enhancing asset tracking and accelerating production processes in the Tool
-      Making B Section.
-    </p>
-
-    <h2 class="my-0">Daily Work Plan System (RKH)</h2>
-    <p>
-      <i>CV. Karya Hidup Sentosa</i>
-      <br />
-      Developed a structured Daily Work Plan (RKH/ Rencana Kerja Harian) system to
-      manage operator activities, incorporating task listing, operational time tracking,
-      and weekly data reporting to improve efficiency, accountability, and performance
-      monitoring.
-    </p>
-
-    <h2 class="my-0">CNC Blanking Material Desktop Application</h2>
-    <p>
-      <i>
-        CV. Karya Hidup Sentosa, <a
-          href="https://github.com/gunungpw/cnc-blanking"
-          >GitHub: CNC Blanking</a
-        >
-      </i>
-      <br />
-      Engineered a Python and Tkinter-based desktop application to automate CNC program
-      generation (tool path) for CNC milling, enabling precise blanking of raw materials
-      to meet technical drawing specifications and production requirements.
-    </p>
-
-    <h2 class="my-0">Senyummu Web Application</h2>
-    <p>
-      <i
-        >Skilvul Innovation Challenge Cycle 2, <a
-          href="https://github.com/gunungpw/oral-diseases"
-        >
-          GitHub: Senyummu</a
-        ></i
+  <header class="mb-10 sm:mb-12">
+    <h1 class="font-serif text-3xl leading-tight font-medium sm:text-4xl">
+      Gunung Pambudi Wibisono
+    </h1>
+    <p
+      class="mt-3 flex flex-col gap-1 text-sm sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-2 sm:gap-y-1"
+    >
+      <span class="text-main/70">Kab. Bogor, Jawa Barat, Indonesia</span>
+      <span aria-hidden="true" class="hidden text-main/30 sm:inline">·</span>
+      <a class="link" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+      <span aria-hidden="true" class="hidden text-main/30 sm:inline">·</span>
+      <a class="link" href="https://github.com/gunungpw">github.com/gunungpw</a>
+      <span aria-hidden="true" class="hidden text-main/30 sm:inline">·</span>
+      <a class="link" href="https://www.linkedin.com/in/gunungpw/"
+        >linkedin.com/in/gunungpw</a
       >
-      <br />
-      Created a web application utilizing image recognition to analyze dental photographs
-      for the detection of dental diseases and damage, enhancing diagnostic accuracy
-      and accessibility.
+      <span aria-hidden="true" class="hidden text-main/30 sm:inline">·</span>
+      <a class="link" href="/">gunung.my.id</a>
     </p>
+  </header>
 
-    <h2 class="my-0">Scrap and Repair Rate Reduction Initiative</h2>
-    <p>
-      <i>CV. Karya Hidup Sentosa</i>
-      <br />
-      Led a project to reduce scrap and repair rates in the Tool Making B Section
-      by developing standardized forms, SOPs for reporting, and root cause analysis
-      protocols, achieving documented targets, minimizing defects, and reducing material,
-      cutting tool, and energy costs.
-    </p>
-  </div>
+  <section>
+    <h2 class={sectionTitleClass}>Professional Summary</h2>
+    <p class="leading-7 sm:text-justify">{summary}</p>
+  </section>
+
+  <section class="mt-10">
+    <h2 class={sectionTitleClass}>Work Experience</h2>
+    <div class="space-y-6">
+      {
+        experience.map((job) => (
+          <div>
+            <div class={rowClass}>
+              <h3 class="font-serif text-lg leading-snug font-medium">
+                {job.title}
+              </h3>
+              <p class={dateClass}>{job.dates}</p>
+            </div>
+            <div class={`${rowClass} mt-0.5`}>
+              <p class="text-sm">{job.company}</p>
+              <p class="shrink-0 text-sm italic text-main/70">{job.location}</p>
+            </div>
+            <ul class={bulletListClass}>
+              {job.bullets.map((bullet) => (
+                <li>{bullet}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-10">
+    <h2 class={sectionTitleClass}>Education</h2>
+    <div class="space-y-5">
+      {
+        education.map((school) => (
+          <div>
+            <div class={rowClass}>
+              <h3 class="font-serif text-base font-medium">
+                {school.institution}
+              </h3>
+              <p class={dateClass}>{school.dates}</p>
+            </div>
+            <div class={`${rowClass} mt-0.5`}>
+              <p class="text-sm italic">{school.degree}</p>
+              <p class="shrink-0 text-sm italic text-main/70">
+                {school.location}
+              </p>
+            </div>
+            {school.bullets.length > 0 && (
+              <ul class={bulletListClass}>
+                {school.bullets.map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-10">
+    <h2 class={sectionTitleClass}>Technical Skills</h2>
+    <ul class="list-disc space-y-1.5 pl-5 leading-7">
+      {
+        skills.map((skill) => (
+          <li>
+            <strong class="font-semibold">{skill.label}:</strong>
+            {" "}
+            {skill.items}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mt-10">
+    <h2 class={sectionTitleClass}>Selected Projects</h2>
+    <div class="space-y-4">
+      {
+        projects.map((project) => (
+          <div>
+            <div class="flex flex-wrap items-baseline gap-x-2">
+              <h3 class="font-serif text-base font-medium">{project.title}</h3>
+              <p class="text-sm italic text-main/70">
+                {project.href ? (
+                  <a class="link" href={project.href}>
+                    {project.context}
+                  </a>
+                ) : (
+                  project.context
+                )}
+              </p>
+            </div>
+            <p class="mt-1 leading-7 sm:text-justify">{project.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-10">
+    <h2 class={sectionTitleClass}>Certifications &amp; Training</h2>
+    <div class="space-y-4">
+      {
+        certifications.map((cert) => (
+          <div>
+            <div class={certRowClass}>
+              <p class="min-w-0">
+                <strong class="font-semibold">{cert.name}</strong>,{" "}
+                {cert.issuer}
+              </p>
+              <p class={dateClass}>{cert.date}</p>
+            </div>
+            <p class="mt-0.5 text-sm leading-6 text-main/70 sm:text-justify">
+              {cert.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-10">
+    <h2 class={sectionTitleClass}>Awards</h2>
+    <ul class="list-disc space-y-1 pl-5 leading-7">
+      <li>
+        Team Leader, 1st Place, Skilvul Innovation Challenge, AI Competition
+        Cycle 2 (National Level), Project: <a
+          class="link"
+          href="https://github.com/gunungpw/oral-diseases">Senyummu</a
+        >.
+      </li>
+    </ul>
+  </section>
+
+  <section class="mt-10">
+    <h2 class={sectionTitleClass}>Additional Information</h2>
+    <ul class="list-disc space-y-1 pl-5 leading-7">
+      <li>
+        <strong class="font-semibold">Languages:</strong> Indonesian (active),
+        English (active)
+      </li>
+    </ul>
+  </section>
 </BaseLayout>
+
+<style>
+  .link {
+    @apply underline decoration-dashed decoration-1 underline-offset-2 hover:decoration-solid;
+  }
+</style>

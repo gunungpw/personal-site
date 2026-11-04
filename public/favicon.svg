@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg width="800px" height="800px" viewBox="0 0 24 24" id="Line" xmlns="http://www.w3.org/2000/svg"><path id="primary" d="M15.24,6.63a1.09,1.09,0,0,0-2,0l-2.8,5.53v0L9,8.9a1,1,0,0,0-1.8,0L3,18H21Z" style="fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"></path></svg>
+<svg width="64" height="64" viewBox="0 0 24 24" id="Line" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    #primary {
+      stroke: #171717;
+    }
+    @media (prefers-color-scheme: dark) {
+      #primary {
+        stroke: #f2f1ec;
+      }
+    }
+  </style>
+  <path id="primary" d="M15.24,6.63a1.09,1.09,0,0,0-2,0l-2.8,5.53v0L9,8.9a1,1,0,0,0-1.8,0L3,18H21Z" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
