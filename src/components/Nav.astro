@@ -22,7 +22,7 @@ const navLinks = siteConfig.headerNavLinks || [];
           {navLinks.map((link) => (
             <li class="py-1">
               <NavLink
-                class="text-2xl upper font-serif text-main  hover:underline hover:underline-offset-2 hover:decoration-1 md:text-2xl"
+                class="text-2xl uppercase font-serif text-main  hover:underline hover:underline-offset-2 hover:decoration-1 md:text-2xl"
                 href={link.href}
               >
                 {link.text}
@@ -86,24 +86,58 @@ const navLinks = siteConfig.headerNavLinks || [];
 </style>
 
 <script>
-  function menuToggle() {
-    const menu = document.querySelector(".menu");
-    const menuToggleBtn = document.querySelector(".menu-toggle");
-    menuToggleBtn?.addEventListener("click", () => {
-      const isMenuExpanded =
-        menuToggleBtn.getAttribute("aria-expanded") === "true";
-      menuToggleBtn.classList.toggle("is-active");
-      menuToggleBtn.setAttribute(
-        "aria-expanded",
-        isMenuExpanded ? "false" : "true"
-      );
-      menuToggleBtn.setAttribute(
-        "aria-label",
-        isMenuExpanded ? "Open Menu" : "Close Menu"
-      );
-      menu?.classList.toggle("is-visible");
+  function getMenu() {
+    return document.querySelector<HTMLElement>(".menu");
+  }
+
+  function getMenuToggle() {
+    return document.querySelector<HTMLButtonElement>(".menu-toggle");
+  }
+
+  function setMenu(open: boolean) {
+    const menu = getMenu();
+    const toggle = getMenuToggle();
+    if (!menu || !toggle) return;
+    toggle.classList.toggle("is-active", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close Menu" : "Open Menu");
+    menu.classList.toggle("is-visible", open);
+  }
+
+  function isMenuOpen() {
+    return getMenuToggle()?.getAttribute("aria-expanded") === "true";
+  }
+
+  // Delegated: survives Astro client-side navigation without rebinding
+  const menuWindow = window as Window & { menuListenersReady?: boolean };
+  if (!menuWindow.menuListenersReady) {
+    menuWindow.menuListenersReady = true;
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+
+      if (target.closest(".menu-toggle")) {
+        const open = !isMenuOpen();
+        setMenu(open);
+        if (open) getMenu()?.querySelector("a")?.focus();
+        return;
+      }
+
+      if (target.closest(".menu a")) {
+        setMenu(false);
+        return;
+      }
+
+      if (isMenuOpen() && !target.closest(".menu")) {
+        setMenu(false);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || !isMenuOpen()) return;
+      setMenu(false);
+      getMenuToggle()?.focus();
     });
   }
-  menuToggle();
-  document.addEventListener("astro:after-swap", menuToggle);
 </script>

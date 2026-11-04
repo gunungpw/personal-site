@@ -3,6 +3,15 @@ import { getCollection } from 'astro:content';
 import siteConfig from '../site-config.ts';
 import { sortItemsByDateDesc } from '../utils/data-utils.ts';
 
+/**
+ * Frontmatter dates are calendar dates, so publish them at UTC midnight of the
+ * same day instead of shifting into the previous day (and never mutate the
+ * Date object returned by the content collection).
+ */
+function toUtcDateOnly(date) {
+    return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+}
+
 export async function GET(context) {
     const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
     return rss({
@@ -13,7 +22,8 @@ export async function GET(context) {
             title: item.data.title,
             description: item.data.excerpt,
             link: `/blog/${item.id}/`,
-            pubDate: item.data.publishDate.setUTCHours(0)
+            pubDate: toUtcDateOnly(item.data.publishDate),
+            categories: item.data.tags
         }))
     });
 }
