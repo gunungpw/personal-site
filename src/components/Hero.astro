@@ -42,7 +42,9 @@ const hero = siteConfig.hero;
       {hero.actions && hero.actions.length > 0 && (
         <div class="flex flex-wrap gap-4">
           {hero.actions.map((action) => (
-            <Button href={action.href}>{action.text}</Button>
+            <Button href={action.href} download={action.download}>
+              {action.text}
+            </Button>
           ))}
         </div>
       )}

@@ -9,6 +9,7 @@ export type Image = {
 export type Link = {
   text: string;
   href: string;
+  download?: boolean;
 };
 
 export type Hero = {
@@ -16,6 +17,23 @@ export type Hero = {
   text?: string;
   image?: Image;
   actions?: Link[];
+};
+
+export type Highlight = {
+  title: string;
+  text: string;
+};
+
+export type Work = {
+  title: string;
+  meta: string;
+  description: string;
+  href?: string;
+};
+
+export type Homepage = {
+  highlights: Highlight[];
+  work: Work[];
 };
 
 export type SiteConfig = {
@@ -29,6 +47,7 @@ export type SiteConfig = {
   footerNavLinks?: Link[];
   socialLinks?: Link[];
   hero?: Hero;
+  homepage?: Homepage;
 };
 
 const siteConfig: SiteConfig = {
@@ -73,12 +92,54 @@ const siteConfig: SiteConfig = {
     }
   ],
   hero: {
-    title: 'Hi There',
-    text: "I am a Mechanical Engineering with experience and expertise in machining, jig and fixture design, measuring tools, materials engineering, robotics, and industrial equipment maintenance and inspection. Additionally, I possess competencies in desktop and web application programming, which support my ability to develop efficient and innovative technical solutions. With this background, I am ready to contribute professionally to engineering projects that require precision, creativity, and a technology-driven approach.",
+    title: 'Mechanical engineer, tooling & software',
+    text: "I work where tooling meets software: jigs, fixtures, and machining processes, plus the desktop and web tools that keep production moving. Mechanical Engineering graduate of Gadjah Mada University, currently a production engineer in West Java.",
     actions: [
+      {
+        text: 'Download CV (PDF)',
+        href: '/resume.pdf',
+        download: true
+      },
       {
         text: 'Get in Touch',
         href: '/contact/'
+      }
+    ]
+  },
+  homepage: {
+    highlights: [
+      {
+        title: 'Tooling & fixtures',
+        text: 'Jig and fixture design, tool and die making, and tool-room control for mass-produced tractors, harvesters, and trucks.'
+      },
+      {
+        title: 'Machining & quality',
+        text: 'CNC milling and turning, precision measurement, root-cause analysis, and ISO 9001 / 45001 practice on the shop floor.'
+      },
+      {
+        title: 'Production software',
+        text: 'Python and web tools that generate CNC programs, plan daily work, and put production data where operators can use it.'
+      }
+    ],
+    work: [
+      {
+        title: 'Tool Room Design and Implementation',
+        meta: 'CV. Karya Hidup Sentosa',
+        description:
+          'Centralised tool room for cutting tools, holders, and equipment, improving asset tracking and production speed in the Tool Making B section.'
+      },
+      {
+        title: 'Daily Work Plan System (RKH)',
+        meta: 'CV. Karya Hidup Sentosa',
+        description:
+          'Planning and time-tracking system for operator activities, with weekly reporting to support performance monitoring.'
+      },
+      {
+        title: 'CNC Blanking Desktop Application',
+        meta: 'Python · Tkinter',
+        description:
+          'Generates CNC tool paths for blanking raw material to drawing specification, replacing manual program writing.',
+        href: 'https://github.com/gunungpw/cnc-blanking'
       }
     ]
   }

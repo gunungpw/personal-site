@@ -78,6 +78,7 @@ function formatCanonicalURL(url: string | URL) {
 
 <!-- Low Priority Global Metadata -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
 <!-- Page Metadata -->
@@ -92,6 +93,7 @@ function formatCanonicalURL(url: string | URL) {
 <meta property="og:type" content={pageType} />
 <meta property="og:url" content={formatCanonicalURL(canonicalURL)} />
 <meta property="og:site_name" content={siteConfig.title} />
+<meta property="og:locale" content="en_US" />
 <meta property="og:title" content={title} />
 {description && <meta property="og:description" content={description} />}
 {

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
 import siteConfig from "../site-config";
 
 type Job = {
@@ -339,6 +340,9 @@ const bulletListClass = "mt-1.5 list-disc space-y-1 pl-5 leading-7";
       <span aria-hidden="true" class="hidden text-main/30 sm:inline">·</span>
       <a class="link" href="/">gunung.my.id</a>
     </p>
+    <div class="mt-5 flex flex-wrap gap-3" data-print-hide>
+      <Button href="/resume.pdf" download>Download PDF</Button>
+    </div>
   </header>
 
   <section>
@@ -492,6 +496,12 @@ const bulletListClass = "mt-1.5 list-disc space-y-1 pl-5 leading-7";
 
 <style>
   .link {
-    @apply underline decoration-dashed decoration-1 underline-offset-2 hover:decoration-solid;
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+  .link:hover {
+    text-decoration-style: solid;
   }
 </style>
