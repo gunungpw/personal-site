@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,9 +9,9 @@ export default defineConfig({
     integrations: [
         sitemap({
             filter: (page) => !page.includes('/404')
-        }),
-        tailwind({
-            applyBaseStyles: false
         })
-    ]
+    ],
+    vite: {
+        plugins: [tailwindcss()]
+    }
 });
