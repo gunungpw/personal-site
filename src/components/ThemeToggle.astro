@@ -77,7 +77,29 @@
             applyTheme(event.matches ? "dark" : "light", false);
         });
 
-        document.addEventListener("astro:after-swap", syncButton);
+        // Client-side navigation swaps the <html> attributes with the incoming
+        // document's, dropping the runtime theme class. Carry the current theme
+        // over to the incoming document before the swap so it never flips, then
+        // re-apply it afterwards as a safety net (class, color scheme, meta).
+        let themeBeforeSwap: "light" | "dark" = root.classList.contains("dark")
+            ? "dark"
+            : "light";
+
+        document.addEventListener("astro:before-swap", (event) => {
+            themeBeforeSwap = root.classList.contains("dark") ? "dark" : "light";
+            const newDocument = (
+                event as Event & { newDocument: Document }
+            ).newDocument;
+            newDocument.documentElement.classList.toggle(
+                "dark",
+                themeBeforeSwap === "dark"
+            );
+            newDocument.documentElement.style.colorScheme = themeBeforeSwap;
+        });
+
+        document.addEventListener("astro:after-swap", () => {
+            applyTheme(themeBeforeSwap, false);
+        });
     }
 
     syncButton();
