@@ -33,7 +33,7 @@ export type SiteConfig = {
 
 const siteConfig: SiteConfig = {
   title: 'Gunung Pambudi Wibisono',
-  subtitle: 'Digital Archive',
+  subtitle: 'gunungpw - personal site',
   description:
     'Mechanical engineer with experience in machining, jig and fixture design, and industrial equipment maintenance.',
   email: 'gunungpambudiw@gmail.com',
@@ -74,7 +74,7 @@ const siteConfig: SiteConfig = {
   ],
   hero: {
     title: 'Hi There',
-    text: "I am a Mechanical Engineering graduate from Gadjah Mada University with experience and expertise in machining, jig and fixture design, measuring tools, materials engineering, robotics, and industrial equipment maintenance and inspection. Additionally, I possess competencies in desktop and web application programming, which support my ability to develop efficient and innovative technical solutions. With this background, I am ready to contribute professionally to engineering projects that require precision, creativity, and a technology-driven approach.",
+    text: "I am a Mechanical Engineering with experience and expertise in machining, jig and fixture design, measuring tools, materials engineering, robotics, and industrial equipment maintenance and inspection. Additionally, I possess competencies in desktop and web application programming, which support my ability to develop efficient and innovative technical solutions. With this background, I am ready to contribute professionally to engineering projects that require precision, creativity, and a technology-driven approach.",
     actions: [
       {
         text: 'Get in Touch',
