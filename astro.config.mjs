@@ -6,6 +6,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
     site: 'https://gunung.my.id',
     trailingSlash: 'always',
+    build: {
+        inlineStylesheets: 'always'
+    },
     integrations: [
         sitemap({
             filter: (page) => !page.includes('/404')
